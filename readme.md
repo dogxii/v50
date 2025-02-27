@@ -1,5 +1,9 @@
 # v50
 
+> [!TIP]
+>
+> 施工中 🚧，很多细节待完善，后续也许提供 API 等服务。
+
 一系列高质量的 KFC 疯狂星期四文案，目前已收录 [400+](https://github.com/vikiboss/v50/blob/main/status/v50.json) 条。
 
 > 数据持续更新中，欢迎通过 PR 或 Issue 参与贡献。
