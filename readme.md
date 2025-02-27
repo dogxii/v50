@@ -4,6 +4,13 @@
 
 > 数据持续更新中，欢迎通过 PR 或 Issue 参与贡献。
 
+## 使用
+
+你可以直接拷贝仓库 JSON 数据，直接也可以访问数据源以保证获取到最新的文案数据。
+
+- GitHub Raw URL: https://raw.githubusercontent.com/vikiboss/v50/refs/heads/main/static/v50.json
+- jsDelivr CDN: https://cdn.jsdelivr.net/gh/vikiboss/v50@main/static/v50.json
+
 ## 文案格式规范
 
 > 这是当前仓库文案遵循的格式规范，同时也是贡献文案时的参考标准。
