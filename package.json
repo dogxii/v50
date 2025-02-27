@@ -1,0 +1,14 @@
+{
+  "name": "v50",
+  "scripts": {
+    "dev": "node --no-warnings --experimental-transform-types index.ts"
+  },
+  "author": "Viki <hi@viki.moe> (https://github.com/vikiboss)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.13.5",
+    "@types/pangu": "^4.0.2",
+    "pangu": "^4.0.7",
+    "prettier": "^3.5.2"
+  }
+}
