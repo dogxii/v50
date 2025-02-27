@@ -1,7 +1,8 @@
 {
   "name": "v50",
+  "type": "module",
   "scripts": {
-    "dev": "node --no-warnings --experimental-transform-types index.ts"
+    "dev": "node --disable-warning=ExperimentalWarning --experimental-transform-types index.ts"
   },
   "author": "Viki <hi@viki.moe> (https://github.com/vikiboss)",
   "license": "MIT",
