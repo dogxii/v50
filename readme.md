@@ -10,10 +10,14 @@
 
 ## 使用
 
-你可以直接拷贝仓库 JSON 数据，也可以访问数据源以保证文案数据最新。
+- 通过 API: 获取随机一条文案: https://v50.deno.dev/
+- 手动拷贝仓库 JSON 数据 `./static/v50.json`
+- 通过 CDN 获取最新 JSON 数据: https://cdn.jsdelivr.net/gh/vikiboss/v50@main/static/v50.json
 
-- GitHub Raw URL: https://raw.githubusercontent.com/vikiboss/v50/refs/heads/main/static/v50.json
-- jsDelivr CDN: https://cdn.jsdelivr.net/gh/vikiboss/v50@main/static/v50.json
+> 一些可选的 CDN 链接：
+> 
+> - GitHub Raw URL: https://raw.githubusercontent.com/vikiboss/v50/refs/heads/main/static/v50.json
+> - jsDelivr CDN: https://cdn.jsdelivr.net/gh/vikiboss/v50@main/static/v50.json
 
 ## 文案格式规范
 
