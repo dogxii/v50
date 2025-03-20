@@ -2,7 +2,7 @@
 
 > [!TIP]
 >
-> 施工中 🚧，很多细节待完善，后续也许提供 API 等服务。
+> 施工中 🚧，很多细节待完善。
 
 一系列高质量的 KFC 疯狂星期四文案，目前已收录 [400+](https://github.com/vikiboss/v50/blob/main/status/v50.json) 条。
 
@@ -10,11 +10,13 @@
 
 ## 使用
 
-- 通过 API: 获取随机一条文案: https://v50.deno.dev/
-- 手动拷贝仓库 JSON 数据 `./static/v50.json`
-- 通过 CDN 获取最新 JSON 数据: https://cdn.jsdelivr.net/gh/vikiboss/v50@main/static/v50.json
+你可以通过下面任意一种方式使用本仓库的文案数据。
 
-> 一些可选的 CDN 链接：
+- 通过 API 获取随机文案: https://v50.deno.dev/
+- 手动拷贝仓库 JSON 数据 `./static/v50.json` 使用
+- 通过 CDN 获取本仓库最新的 JSON 数据
+
+> 一些 CDN 链接：
 > 
 > - GitHub Raw URL: https://raw.githubusercontent.com/vikiboss/v50/refs/heads/main/static/v50.json
 > - jsDelivr CDN: https://cdn.jsdelivr.net/gh/vikiboss/v50@main/static/v50.json
