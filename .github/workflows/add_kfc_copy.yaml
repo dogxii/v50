@@ -23,82 +23,35 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # - name: Get issue data
-      #   id: get-issue-data
-      #   uses: actions/github-script@v6
-      #   with:
-      #     script: |
-      #       const issue = await github.rest.issues.get({
-      #         owner: context.repo.owner,
-      #         repo: context.repo.repo,
-      #         issue_number: context.payload.issue.number
-      #       });
+      - name: Add copy to JSON file
+        uses: actions/github-script@v7
+        with:
+          result-encoding: string
+          retries: 3
+          script: |
+            const fs = require('fs');
+            const path = require('path');
 
-      #       const body = issue.data.body;
+            const issue = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
 
-      #       // 解析issue表单内容
-      #       const lines = body.split('\n');
-      #       let content, category, source, author;
+            const username = issue.data.user.login;
+            const sentence = issue.data.body.match(/文案内容\n-+\n([\s\S]+)/)[1].trim();
 
-      #       for (let i = 0; i < lines.length; i++) {
-      #         const line = lines[i].trim();
+            const data = JSON.parse(fs.readFileSync(path.resolve(__dirname, './static/v50.json'), 'utf-8'));
+            data.kfc.push(sentence);
+            fs.writeFileSync(path.resolve(__dirname, './static/v50.json'), JSON.stringify(data, null, 2));
 
-      #         if (line.startsWith('### 句子内容')) {
-      #           content = lines[i + 1].trim();
-      #         } else if (line.startsWith('### 句子类别')) {
-      #           category = lines[i + 1].trim();
-      #         } else if (line.startsWith('### 句子来源')) {
-      #           source = lines[i + 1].trim();
-      #         } else if (line.startsWith('### 作者')) {
-      #           author = lines[i + 1].trim();
-      #         }
-      #       }
+            await exec('pnpm dev');
 
-      #       // 创建新句子对象
-      #       const newSentence = {
-      #         content: content
-      #       };
-
-      #       if (category && category !== "_No response_") {
-      #         newSentence.category = category;
-      #       }
-
-      #       if (source && source !== "_No response_") {
-      #         newSentence.source = source;
-      #       }
-
-      #       if (author && author !== "_No response_") {
-      #         newSentence.author = author;
-      #       }
-
-      #       // 将新句子写入临时文件
-      #       const fs = require('fs');
-      #       fs.writeFileSync('new-sentence.json', JSON.stringify(newSentence));
-
-      #       return { issue_number: context.payload.issue.number };
-
-      # - name: Add sentence to JSON file
-      #   run: |
-      #     NEW_SENTENCE=$(cat new-sentence.json)
-      #     # 将新句子添加到文件
-      #     node -e "
-      #       const fs = require('fs');
-      #       const newSentence = JSON.parse(fs.readFileSync('new-sentence.json', 'utf8'));
-      #       const sentences = JSON.parse(fs.readFileSync('static/sentences.json', 'utf8'));
-      #       sentences.push(newSentence);
-      #       fs.writeFileSync('static/sentences.json', JSON.stringify(sentences, null, 2));
-      #     "
-
-      # - name: Run formatting and deduplication
-      #   run: pnpm dev
-
-      # - name: Commit changes
-      #   run: |
-      #     git config --global user.name 'GitHub Action Bot'
-      #     git config --global user.email 'action@github.com'
-      #     git add static/sentences.json
-      #     git commit -m "Add new sentence from issue #${{ steps.get-issue-data.outputs.result.issue_number }}"
-      #     git push
+            await exec('git config --global user.email "github-actions[bot]@users.noreply.github.com"');
+            await exec('git config --global user.name "GitHub Actions"');
+            await exec('git add .');
+            await exec('git commit -m "chore: add new copy by @${username}"');
+            await exec('git push');
 
       - name: Comment on issue and close
         uses: actions/github-script@v7
@@ -106,20 +59,16 @@ jobs:
           result-encoding: string
           retries: 3
           script: |
-            const issueNumber = context.issue.number;
-
-            // 在issue上发表评论
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: issueNumber,
+              issue_number: context.issue.number,
               body: '✅ 您提交的文案已被添加到仓库中。感谢您的贡献！'
             });
 
-            // 关闭issue
             await github.rest.issues.update({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: issueNumber,
+              issue_number: context.issue.number,
               state: 'closed'
             });
