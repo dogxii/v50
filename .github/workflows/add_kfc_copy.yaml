@@ -33,7 +33,6 @@ jobs:
           script: |
             const fs = require('fs');
             const path = require('path');
-            const { exec } = require('@actions/exec');
 
             const issue = await github.rest.issues.get({
               owner: context.repo.owner,
