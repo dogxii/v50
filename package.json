@@ -1,6 +1,7 @@
 {
   "name": "v50",
   "type": "module",
+  "packageManager": "pnpm@10.6.5",
   "scripts": {
     "dev": "node --disable-warning=ExperimentalWarning --experimental-transform-types index.ts"
   },
