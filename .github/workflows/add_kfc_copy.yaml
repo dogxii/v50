@@ -17,10 +17,11 @@ jobs:
         with:
           node-version-file: '.node-version'
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+
       - name: Install dependencies
-        run: |
-          npm install -g pnpm
-          pnpm install
+        run: pnpm install --frozen-lockfile
 
       # - name: Get issue data
       #   id: get-issue-data
@@ -41,7 +42,7 @@ jobs:
 
       #       for (let i = 0; i < lines.length; i++) {
       #         const line = lines[i].trim();
-              
+
       #         if (line.startsWith('### 句子内容')) {
       #           content = lines[i + 1].trim();
       #         } else if (line.startsWith('### 句子类别')) {
@@ -100,10 +101,12 @@ jobs:
       #     git push
 
       - name: Comment on issue and close
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
+          result-encoding: string
+          retries: 3
           script: |
-            const issueNumber = context.payload.issue.number;
+            const issueNumber = context.issue.number;
 
             // 在issue上发表评论
             await github.rest.issues.createComment({
