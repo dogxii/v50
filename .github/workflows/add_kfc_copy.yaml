@@ -47,13 +47,12 @@ jobs:
             data.push(sentence);
             fs.writeFileSync(path.resolve('./static/v50.json'), JSON.stringify(data, null, 2));
 
-            await exec('pnpm dev');
-
-            await exec('git config user.email "github-actions[bot]@users.noreply.github.com"');
-            await exec('git config user.name "github-actions[bot]"');
-            await exec('git add .');
-            await exec(`git commit -m "chore: add new copy by @${username}"`);
-            await exec('git push');
+            await exec.exec(['pnpm', 'dev']);
+            await exec.exec(['git', 'config', 'user.email', '"github-actions[bot]@users.noreply.github.com"']);
+            await exec.exec(['git', 'config', 'user.name', '"github-actions[bot]"']);
+            await exec.exec(['git', 'add', '.']);
+            await exec.exec(['git', 'commit', '-m', `"chore: add new copy by @${username}"`]);
+            await exec.exec(['git', 'push']);
 
       - name: Comment on issue and close
         uses: actions/github-script@v7
