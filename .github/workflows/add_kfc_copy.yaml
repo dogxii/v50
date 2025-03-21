@@ -1,0 +1,122 @@
+name: 添加新文案
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  add-copy:
+    if: github.event.label.name == 'approved'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.node-version'
+
+      - name: Install dependencies
+        run: |
+          npm install -g pnpm
+          pnpm install
+
+      # - name: Get issue data
+      #   id: get-issue-data
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       const issue = await github.rest.issues.get({
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         issue_number: context.payload.issue.number
+      #       });
+
+      #       const body = issue.data.body;
+
+      #       // 解析issue表单内容
+      #       const lines = body.split('\n');
+      #       let content, category, source, author;
+
+      #       for (let i = 0; i < lines.length; i++) {
+      #         const line = lines[i].trim();
+              
+      #         if (line.startsWith('### 句子内容')) {
+      #           content = lines[i + 1].trim();
+      #         } else if (line.startsWith('### 句子类别')) {
+      #           category = lines[i + 1].trim();
+      #         } else if (line.startsWith('### 句子来源')) {
+      #           source = lines[i + 1].trim();
+      #         } else if (line.startsWith('### 作者')) {
+      #           author = lines[i + 1].trim();
+      #         }
+      #       }
+
+      #       // 创建新句子对象
+      #       const newSentence = {
+      #         content: content
+      #       };
+
+      #       if (category && category !== "_No response_") {
+      #         newSentence.category = category;
+      #       }
+
+      #       if (source && source !== "_No response_") {
+      #         newSentence.source = source;
+      #       }
+
+      #       if (author && author !== "_No response_") {
+      #         newSentence.author = author;
+      #       }
+
+      #       // 将新句子写入临时文件
+      #       const fs = require('fs');
+      #       fs.writeFileSync('new-sentence.json', JSON.stringify(newSentence));
+
+      #       return { issue_number: context.payload.issue.number };
+
+      # - name: Add sentence to JSON file
+      #   run: |
+      #     NEW_SENTENCE=$(cat new-sentence.json)
+      #     # 将新句子添加到文件
+      #     node -e "
+      #       const fs = require('fs');
+      #       const newSentence = JSON.parse(fs.readFileSync('new-sentence.json', 'utf8'));
+      #       const sentences = JSON.parse(fs.readFileSync('static/sentences.json', 'utf8'));
+      #       sentences.push(newSentence);
+      #       fs.writeFileSync('static/sentences.json', JSON.stringify(sentences, null, 2));
+      #     "
+
+      # - name: Run formatting and deduplication
+      #   run: pnpm dev
+
+      # - name: Commit changes
+      #   run: |
+      #     git config --global user.name 'GitHub Action Bot'
+      #     git config --global user.email 'action@github.com'
+      #     git add static/sentences.json
+      #     git commit -m "Add new sentence from issue #${{ steps.get-issue-data.outputs.result.issue_number }}"
+      #     git push
+
+      - name: Comment on issue and close
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issueNumber = context.payload.issue.number;
+
+            // 在issue上发表评论
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: '✅ 您提交的文案已被添加到仓库中。感谢您的贡献！'
+            });
+
+            // 关闭issue
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              state: 'closed'
+            });

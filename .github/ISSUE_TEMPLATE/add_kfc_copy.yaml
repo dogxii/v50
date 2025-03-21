@@ -1,0 +1,29 @@
+name: 新增 KFC 疯狂星期四文案
+description: 用这个模板提交新的 KFC 疯狂星期四文案
+title: "[新增文案]: "
+labels: ["new-kfc-copy"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您参与贡献，请完善下列表单：
+  
+  - type: input
+    id: sentence
+    attributes:
+      label: 文案内容
+      description: 请输入您想提交的 KFC 疯狂星期四文案
+      placeholder: 文案内容
+    validations:
+      required: true
+  
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 注意事项
+      description: 提交前请确认以下注意事项
+      options:
+        - label: 我确认这个文案与 KFC 疯狂星期四相关
+          required: true
+        - label: 我确认这个文案没有被重复提交（通过搜索 v50.deno.dev 的返回内容确认）
+          required: true
