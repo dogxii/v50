@@ -1,6 +1,6 @@
 name: 新增 KFC 疯狂星期四文案
 description: 用这个模板提交新的 KFC 疯狂星期四文案
-title: "[新增文案]: "
+title: "[新增文案]: 新增一条 KFC 疯狂星期四文案"
 labels: ["new-kfc-copy"]
 body:
   - type: markdown
