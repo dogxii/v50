@@ -3,7 +3,9 @@
   "type": "module",
   "packageManager": "pnpm@10.6.5",
   "scripts": {
-    "dev": "node --disable-warning=ExperimentalWarning --experimental-transform-types index.ts"
+    "dev": "pnpm format",
+    "add-copy": "node --disable-warning=ExperimentalWarning --experimental-transform-types ./scripts/add.ts",
+    "format": "node --disable-warning=ExperimentalWarning --experimental-transform-types ./scripts/format.ts"
   },
   "author": "Viki <hi@viki.moe> (https://github.com/vikiboss)",
   "license": "MIT",

@@ -23,36 +23,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Add copy to JSON file
-        uses: actions/github-script@v7
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          result-encoding: string
-          retries: 3
-          script: |
-            const fs = require('fs');
-            const path = require('path');
-
-            const issue = await github.rest.issues.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number
-            });
-
-            const username = issue.data.user.login;
-            const sentence = issue.data.body.split('### 文案内容')[1].split('### 注意事项')[0].trim();
-
-            const data = JSON.parse(fs.readFileSync(path.resolve('./static/v50.json'), 'utf-8'));
-            data.push(sentence);
-            fs.writeFileSync(path.resolve('./static/v50.json'), JSON.stringify(data, null, 2));
-
-            await exec.exec(['pnpm', 'dev']);
-            await exec.exec(['git', 'config', 'user.email', '"github-actions[bot]@users.noreply.github.com"']);
-            await exec.exec(['git', 'config', 'user.name', '"github-actions[bot]"']);
-            await exec.exec(['git', 'add', '.']);
-            await exec.exec(['git', 'commit', '-m', `"chore: add new copy by @${username}"`]);
-            await exec.exec(['git', 'push']);
+      # - name: Add copy
 
       - name: Comment on issue and close
         uses: actions/github-script@v7
