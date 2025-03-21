@@ -3,7 +3,7 @@ description: 提交新的 KFC 疯狂星期四文案的 Issue 模板
 title: "[新增文案]: 新增一条 KFC 疯狂星期四文案"
 labels: ["new-kfc-copy"]
 body:
-  - type: input
+  - type: textarea
     id: sentence
     attributes:
       label: 文案内容
