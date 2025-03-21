@@ -39,7 +39,7 @@ jobs:
             });
 
             const username = issue.data.user.login;
-            const sentence = issue.data.body.match(/文案内容\n-+\n([\s\S]+)/)[1].trim();
+            const sentence = issue.data.body.split('文案内容')[1].split('注意事项')[0].trim();
 
             const data = JSON.parse(fs.readFileSync(path.resolve(__dirname, './static/v50.json'), 'utf-8'));
             data.kfc.push(sentence);
