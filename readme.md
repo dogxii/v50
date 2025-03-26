@@ -15,7 +15,9 @@
 - 直接拷贝 JSON 数据使用: `./static/v50.json`
 - 通过 CDN 获取最新的 JSON 数据
 
-> [!TIP] 一些可用 CDN 链接
+> [!TIP]
+>
+> 一些可用 CDN 链接
 > 
 > - GitHub Raw URL: https://raw.githubusercontent.com/vikiboss/v50/refs/heads/main/static/v50.json
 > - jsDelivr CDN: https://cdn.jsdelivr.net/gh/vikiboss/v50@main/static/v50.json
@@ -32,7 +34,9 @@
 
 ## Credits
 
-> [!IMPORTANT] 免责声明
+> [!IMPORTANT]
+>
+> 免责声明
 > 
 > 本仓库文案数据均收集自公开互联网，如有侵权请 [联系我](hi@viki.moe) 删除。
 
