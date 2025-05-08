@@ -1,7 +1,7 @@
 {
   "name": "v50",
   "type": "module",
-  "packageManager": "pnpm@10.6.5",
+  "packageManager": "pnpm@10.10.0",
   "scripts": {
     "dev": "pnpm format",
     "add-copy": "node --disable-warning=ExperimentalWarning --experimental-transform-types ./scripts/add.ts",
@@ -10,9 +10,9 @@
   "author": "Viki <hi@viki.moe> (https://github.com/vikiboss)",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^22.13.5",
+    "@types/node": "^22.15.16",
     "@types/pangu": "^4.0.2",
     "pangu": "^4.0.7",
-    "prettier": "^3.5.2"
+    "prettier": "^3.5.3"
   }
 }
