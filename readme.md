@@ -2,7 +2,7 @@
 
 > [!TIP]
 >
-> 数据持续更新中，欢迎 [提交新文案](#)。
+> 数据持续更新中，欢迎 [提交新文案](https://github.com/vikiboss/v50/issues/new?template=add_kfc_copy.yaml)。
 
 一系列高质量的 KFC 疯狂星期四文案，目前已收录 [400+](https://github.com/vikiboss/v50/blob/main/status/v50.json) 条。
 
