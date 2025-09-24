@@ -4,6 +4,7 @@
   "packageManager": "pnpm@10.14.0",
   "scripts": {
     "dev": "pnpm format",
+    "dev:api": "deno -A --watch ./api/index.ts",
     "add-copy": "node --disable-warning=ExperimentalWarning --experimental-transform-types ./scripts/add.ts",
     "format": "node --disable-warning=ExperimentalWarning --experimental-transform-types ./scripts/format.ts"
   },
