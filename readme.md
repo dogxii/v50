@@ -21,6 +21,7 @@
 > 
 > - GitHub Raw URL: https://raw.githubusercontent.com/vikiboss/v50/refs/heads/main/static/v50.json
 > - jsDelivr CDN: https://cdn.jsdelivr.net/gh/vikiboss/v50@main/static/v50.json
+> - jsDelivr Mirror CDN: https://cdn.jsdmirror.com/gh/vikiboss/v50@main/static/v50.json
 
 ## 文案格式规范
 
