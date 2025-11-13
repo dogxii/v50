@@ -6,7 +6,7 @@ const unique = [...new Set(data)]
 const spaced = unique.map(item => pangu.spacing(item))
 const normalized = spaced.map(item => normalizeCopy(item))
 const uniqueTwice = [...new Set(normalized)]
-const sorted = uniqueTwice.sort((a, b) => a.length - b.length)
+const sorted = uniqueTwice.toSorted((a, b) => a.length - b.length)
 
 fs.writeFileSync('./static/v50.json', JSON.stringify(sorted, null, 2))
 

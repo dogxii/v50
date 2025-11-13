@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@types/node':
-        specifier: ^22.17.1
-        version: 22.17.1
+        specifier: ^22.19.1
+        version: 22.19.1
       '@types/pangu':
         specifier: ^4.0.2
         version: 4.0.2
@@ -23,8 +23,8 @@ importers:
 
 packages:
 
-  '@types/node@22.17.1':
-    resolution: {integrity: sha512-y3tBaz+rjspDTylNjAX37jEC3TETEFGNJL6uQDxwF9/8GLLIjW1rvVHlynyuUKMnMr1Roq8jOv3vkopBjC4/VA==}
+  '@types/node@22.19.1':
+    resolution: {integrity: sha512-LCCV0HdSZZZb34qifBsyWlUmok6W7ouER+oQIGBScS8EsZsQbrtFTUrDX4hOl+CS6p7cnNC4td+qrSVGSCTUfQ==}
 
   '@types/pangu@4.0.2':
     resolution: {integrity: sha512-rVwVCkOFTWpmBjZuxTiVhLE8cwIKff3jWEKjs+DDg6bMkQwjp9Bp03pNanHQTtTzP53SDHJutb/kfGFHNhOJaQ==}
@@ -43,7 +43,7 @@ packages:
 
 snapshots:
 
-  '@types/node@22.17.1':
+  '@types/node@22.19.1':
     dependencies:
       undici-types: 6.21.0
 
