@@ -1,19 +1,19 @@
 {
   "name": "v50",
   "type": "module",
-  "packageManager": "pnpm@10.22.0",
+  "packageManager": "bun@1.3.12",
   "scripts": {
-    "dev": "pnpm format",
+    "dev": "bun run format",
     "dev:api": "deno -A --watch ./api/index.ts",
-    "add-copy": "node --disable-warning=ExperimentalWarning --experimental-transform-types ./scripts/add.ts",
-    "format": "node --disable-warning=ExperimentalWarning --experimental-transform-types ./scripts/format.ts"
+    "add-copy": "bun ./scripts/add.ts",
+    "format": "bun ./scripts/format.ts"
   },
   "author": "Viki <hi@viki.moe> (https://github.com/vikiboss)",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^22.19.1",
+    "@types/node": "^25.6.0",
     "@types/pangu": "^4.0.2",
-    "pangu": "^4.0.7",
-    "prettier": "^3.6.2"
+    "pangu": "^7.2.1",
+    "prettier": "^3.8.3"
   }
 }
