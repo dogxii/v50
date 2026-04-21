@@ -3,7 +3,7 @@ import pangu from 'pangu'
 import data from '../static/v50.json' with { type: 'json' }
 
 const unique = [...new Set(data)]
-const spaced = unique.map(item => pangu.spacing(item))
+const spaced = unique.map(item => pangu.spacingText(item))
 const normalized = spaced.map(item => normalizeCopy(item))
 const uniqueTwice = [...new Set(normalized)]
 const sorted = uniqueTwice.toSorted((a, b) => a.length - b.length)
