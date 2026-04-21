@@ -4,16 +4,22 @@
 >
 > 数据持续更新中，欢迎 [提交新文案](https://github.com/vikiboss/v50/issues/new?template=add_kfc_copy.yaml)。
 
-一系列高质量的 KFC 疯狂星期四文案，目前已收录 [400+](https://github.com/vikiboss/v50/blob/main/status/v50.json) 条。
-
+一系列高质量的 KFC 疯狂星期四文案，目前已收录 [450+](https://github.com/vikiboss/v50/blob/main/static/v50.json) 条。
 
 ## 使用
 
-你可以通过下面任意一种方式使用本仓库的文案数据。
+你可以通过下面任意一种方式获取本仓库的文案数据。
 
-- 通过 API 获取随机文案: https://v50.deno.dev
-- 直接拷贝 JSON 数据使用: `./static/v50.json`
+- 通过 API 获取：https://v50.deno.dev
+- 直接拷贝 JSON 数据使用：`./static/v50.json`
 - 通过 CDN 获取最新的 JSON 数据
+
+### API
+
+| 端点 | 说明 | 返回格式 |
+|------|------|----------|
+| `/` 或 `/random` | 随机返回一条文案 | `text/plain` |
+| `/list` | 返回所有文案 | `application/json` |
 
 > [!TIP]
 >
@@ -49,4 +55,4 @@
 
 ## License
 
-[MIT](license) License © 2025-PRESENT Viki
+[MIT](license) License © 2025-present Viki
